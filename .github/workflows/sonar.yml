@@ -1,9 +1,8 @@
-# .github/workflows/sonar.yml
-name: SonarCloud CLI
+name: SonarCloud
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -27,4 +26,3 @@ jobs:
           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
           unzip sonar-scanner-cli-5.0.1.3006-linux.zip
           ./sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner
-        working-directory: ./imagebooru
