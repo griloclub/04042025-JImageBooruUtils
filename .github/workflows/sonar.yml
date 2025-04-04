@@ -1,3 +1,10 @@
+- name: Compile Java files
+  run: |
+    mkdir -p out
+    find . -name "*.java" > sources.txt
+    javac -d out @sources.txt
+
+
 name: SonarCloud
 
 on:
