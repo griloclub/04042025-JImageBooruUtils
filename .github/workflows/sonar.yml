@@ -1,23 +1,6 @@
-- name: Compile Java files
-  run: |
-    mkdir -p out
-    find . -name "*.java" > sources.txt
-    javac -d out @sources.txt
-
-- name: SonarCloud
-
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    types: [opened, synchronize, reopened]
-
 jobs:
   build:
-    name: Build and Analyze
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
@@ -33,6 +16,12 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+
+      - name: Compile Java files
+        run: |
+          mkdir -p out
+          find . -name "*.java" > sources.txt
+          javac -d out @sources.txt
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
