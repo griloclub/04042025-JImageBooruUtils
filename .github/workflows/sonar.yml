@@ -4,8 +4,7 @@
     find . -name "*.java" > sources.txt
     javac -d out @sources.txt
 
-
-name: SonarCloud
+- name: SonarCloud
 
 on:
   push:
